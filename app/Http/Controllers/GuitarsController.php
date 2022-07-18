@@ -7,14 +7,6 @@ use App\Models\Guitar;
 
 class GuitarsController extends Controller
 {
-    private static function getData() {
-        return [
-            ['id' => 1, 'name' =>'Auto1', 'brand' => 'BMW'],
-            ['id' => 2, 'name' =>'Auto2', 'brand' => 'Audi'],
-            ['id' => 3, 'name' =>'Auto3', 'brand' => 'Ford'],
-            ['id' => 4, 'name' =>'Auto4', 'brand' => 'lambo']
-        ];
-    } 
     /**
      * Display a listing of the resource.
      *
@@ -78,16 +70,8 @@ class GuitarsController extends Controller
     public function show($guitar)
     {
         // GET 
-        $guitars = self::getData();
-
-        $index = array_search($guitar, array_column($guitars, 'id'));
-
-        if ($index === false) {
-            abort(404);
-        }
-
         return view('guitars.show', [
-            'guitar' => $guitars[$index]
+            'guitar' => Guitar::findOrFail($guitar)
         ]);
     }
 
@@ -97,9 +81,12 @@ class GuitarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($guitar)
     {
         // GET
+        return view('guitars.edit', [
+            'guitar' => Guitar::findOrFail($guitar)
+        ]);
     }
 
     /**
@@ -109,9 +96,25 @@ class GuitarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $guitar)
     {
         // POST
+        $request->validate([
+            'guitar-name' => 'required',
+            'brand' => 'required',
+            'year' => 'required|integer'
+        ]);
+        
+        
+        $record = Guitar::findOrFail($guitar);
+
+        $record->name = strip_tags($request->input('guitar-name'));
+        $record->brand = strip_tags($request->input('brand'));
+        $record->year_made = strip_tags($request->input('year'));
+
+        $record->save();
+
+        return redirect()->route('guitars.show', $guitar);
     }
 
     /**
