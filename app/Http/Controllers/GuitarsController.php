@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class GuitarsController extends Controller
 {
+    private static function getData() {
+        return [
+            ['id' => 1, 'name' =>'Auto1', 'brand' => 'BMW'],
+            ['id' => 2, 'name' =>'Auto2', 'brand' => 'Audi'],
+            ['id' => 3, 'name' =>'Auto3', 'brand' => 'Ford'],
+            ['id' => 4, 'name' =>'Auto4', 'brand' => 'lambo']
+        ];
+    } 
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +21,12 @@ class GuitarsController extends Controller
      */
     public function index()
     {
-        //
+        // GET
+
+        return view('guitars.index', [
+            'guitars' => self::getData(),
+            'userInput' => '<script>alert("Hello")</script>'
+        ]);
     }
 
     /**
@@ -23,7 +36,8 @@ class GuitarsController extends Controller
      */
     public function create()
     {
-        //
+        // GET
+        return view('guitars.create');
     }
 
     /**
@@ -34,7 +48,7 @@ class GuitarsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // POST
     }
 
     /**
@@ -43,9 +57,20 @@ class GuitarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($guitar)
     {
-        //
+        // GET 
+        $guitars = self::getData();
+
+        $index = array_search($guitar, array_column($guitars, 'id'));
+
+        if ($index === false) {
+            abort(404);
+        }
+
+        return view('guitars.show', [
+            'guitar' => $guitars[$index]
+        ]);
     }
 
     /**
@@ -56,7 +81,7 @@ class GuitarsController extends Controller
      */
     public function edit($id)
     {
-        //
+        // GET
     }
 
     /**
@@ -68,7 +93,7 @@ class GuitarsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // POST
     }
 
     /**
@@ -79,6 +104,6 @@ class GuitarsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // DELETE
     }
 }
