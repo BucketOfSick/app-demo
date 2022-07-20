@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
-<form class="form bg-white p-6 border-1" method="POST" action="{{ route('guitars.store') }}">
+<form class="forms form unitext p-6 border-1" method="POST" action="{{ route('guitars.store') }}">
     @csrf 
     <div>
         <label class="text-sm" for="name">Guitar Name</label>
