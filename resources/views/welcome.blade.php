@@ -4,19 +4,13 @@
 
     @section('content')
     
-    @if (Route::has('login'))
-    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-        @auth
-            <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-        @else
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-            @endif
-        @endauth
+    <style>.content{position: static; background: url(https://cutewallpaper.org/21/pixel-art-gif-background/Pixel-Art-Background-Gif-1920x1080-1041-Uuu-Pixel-Art-.gif) no-repeat center; background-size: cover;}</style>
+    <div class="welkom max-w-6 mx-auto sm:px-6 lg:px-2 unitext">
+        <h1 class="unitext">Welkom op mijn website!</h1>
+        
+        <p class="text-center">Dit is mijn portfolio website. <br> Neem gerust een kijkje rond!</p>
     </div>
-@endif
+
 
 
 

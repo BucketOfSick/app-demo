@@ -18,5 +18,9 @@ class HomeController extends Controller
         return view('contact');
     }
 
+    public function cv() {
+        return view('cv');
+    }
+
 
 }

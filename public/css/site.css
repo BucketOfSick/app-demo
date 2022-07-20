@@ -1,9 +1,22 @@
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #3a4750;
+}
+
 body {
     font-family: 'Nunito', sans-serif;
 }
 
 .content {
-    background-color: #23272a;
+    background-color: #1e1e24;
 }
 
 .p-4 {
@@ -70,3 +83,48 @@ nav a, nav a:link {
     color: red;
     font-weight: bold;
 }
+
+.logo {
+    margin: 5px;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.welkom {
+    height: 200px;
+    width: 35%;
+    border: 3px solid #2c2f33;
+    border-radius: 5%;
+    background-color: #3e4146;
+    opacity: .9;
+    color: white;
+}
+.welkom h1, p {
+    opacity: inherit;
+}
+
+img {
+    max-width: 75%;
+    max-height: 75%;
+    margin-left: 20px;
+   }
+
+   .social-icons .social-icon {
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: #495057;
+    color: #fff;
+    border-radius: 100%;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  .social-icons .social-icon:last-child {
+    margin-right: 0;
+  }
+  .social-icons .social-icon:hover {
+    background-color: #17a2b8;
+  }

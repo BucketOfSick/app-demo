@@ -18,6 +18,7 @@ use App\Http\Controllers\GuitarsController;
 Route::get('/',[HomeController::class, 'index'])->name('home.index');
 Route::get('/about',[HomeController::class, 'about'])->name('home.about');
 Route::get('/contact',[HomeController::class, 'contact'])->name('home.contact');
+Route::get('/cv',[HomeController::class, 'cv'])->name('home.cv');
 
 
 Route::resource('guitars', GuitarsController::class);
