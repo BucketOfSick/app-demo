@@ -128,3 +128,14 @@ img {
   .social-icons .social-icon:hover {
     background-color: #17a2b8;
   }
+
+  .cvcontent {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  }
+
+  .cvcol {
+    margin: 5px;
+  }
